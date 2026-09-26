@@ -1,0 +1,6 @@
+[submodule "gramps-django"]
+	path = gramps-django
+	url = https://github.com/veliluukkonen/gramps-django.git
+[submodule "gramps-web"]
+	path = gramps-web
+	url = https://github.com/veliluukkonen/gramps-web.git
