@@ -1,0 +1,29 @@
+# --- Yleiset ---
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# --- Python / Django (Backend) ---
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.env
+**/venv/
+**/.venv/
+**/*.db
+**/*.sqlite3
+
+# --- Node / Frontend (Web) ---
+**/node_modules/
+**/dist/
+**/build/
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# --- IDE / Editorit ---
+.vscode/
+.idea/
+EOF.env

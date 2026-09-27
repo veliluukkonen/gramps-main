@@ -1,0 +1,7 @@
+gramps.local {
+    reverse_proxy frontend:80
+}
+
+api.gramps.local {
+    reverse_proxy backend:8000
+}
