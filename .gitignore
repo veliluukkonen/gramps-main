@@ -8,6 +8,8 @@ Thumbs.db
 **/__pycache__/
 **/*.py[cod]
 **/*$py.class
+.env
+keys/
 **/.env
 **/venv/
 **/.venv/
@@ -27,3 +29,4 @@ Thumbs.db
 .vscode/
 .idea/
 EOF.env
+
