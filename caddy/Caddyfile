@@ -1,7 +1,3 @@
-gramps.local {
+http://suku.net, http://127.0.0.1, http://192.168.1.240 {
     reverse_proxy frontend:80
-}
-
-api.gramps.local {
-    reverse_proxy backend:8000
 }

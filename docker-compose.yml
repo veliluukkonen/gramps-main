@@ -12,7 +12,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   backend:
-    image: ghcr.io/gramps-project/grampsdjango:latest
+    image: ghcr.io/veliluukkonen/gramps-django:latest
     restart: always
     depends_on:
       - db
@@ -25,10 +25,13 @@ services:
       - django_static:/app/static
 
   frontend:
-    image: ghcr.io/gramps-project/grampsweb:latest-devel
+    image: ghcr.io/veliluukkonen/gramps-web:latest
     restart: always
     depends_on:
       - backend
+    environment:
+      - NAME_SERVER=127.0.0.11
+      - API_HOST=http://backend:8000
 
   caddy:
     image: caddy:latest
@@ -37,7 +40,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /home/veli/gramps-main/caddy/Caddyfile:/etc/caddy/Caddyfile 
       - caddy_data:/data
       - caddy_config:/config
     depends_on:

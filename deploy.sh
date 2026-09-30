@@ -9,7 +9,7 @@ REMOTE_PORT=${2:-"2376"}
 
 export DOCKER_HOST="tcp://${REMOTE_IP}:${REMOTE_PORT}"
 export DOCKER_TLS_VERIFY=1
-export DOCKER_CERT_PATH="env ./keys/pro"
+export DOCKER_CERT_PATH="./keys/pro"
 # ----------------------------
 
 echo "🚀 Aloitetaan käyttöönotto kohteeseen: ${DOCKER_HOST}"
