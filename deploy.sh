@@ -25,7 +25,6 @@ docker-compose up -d
 
 echo "🧹 Siivotaan käyttämättömät resurssit..."
 docker image prune -f
-docker volume prune -f || true
 
 echo "✅ Valmista! (Done)"
 

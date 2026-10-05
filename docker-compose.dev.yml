@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: gramps
+      POSTGRES_USER: gramps
+      POSTGRES_PASSWORD: gramps_dev
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gramps -d gramps"]
+    ports: ["5432:5432"]
+    volumes: [postgres_dev_data:/var/lib/postgresql/data]
+    networks: [gramps_dev]
+
+  django:
+    build:
+      context: .
+      dockerfile: gramps-django/Dockerfile.dev
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes: ["./gramps-django:/app"]
+    ports: ["8000:8000"]
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.development
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: gramps
+      POSTGRES_USER: gramps
+      POSTGRES_PASSWORD: gramps_dev
+      SECRET_KEY: dev-secret-key
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [gramps_dev]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: gramps-web/Dockerfile.devel
+    command: npm start
+    volumes:
+      - "./gramps-web:/app"
+      - /app/node_modules
+    ports: ["8001:8001"]
+    environment:
+      API_HOST: http://django:8000   # web-dev-server proxies /api here
+    depends_on: [django]
+    networks: [gramps_dev]
+
+volumes:
+  postgres_dev_data:
+networks:
+  gramps_dev:
+    driver: bridge
