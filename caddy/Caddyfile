@@ -1,3 +1,0 @@
-http://suku.net, http://127.0.0.1, http://192.168.1.240 {
-    reverse_proxy frontend:80
-}
