@@ -26,7 +26,7 @@ services:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DJANGO_DEBUG: ${DJANGO_DEBUG}
       BASE_URL: ${BASE_URL:-}
-      REGISTRATION_DISABLED: ${REGISTRATION_DISABLED:-false}
+      REGISTRATION_DISABLED: ${REGISTRATION_DISABLED:-true}
       # E-mail for password reset / new-user notifications.
       # Leave EMAIL_HOST empty to print mails to the backend log instead.
       EMAIL_HOST: ${EMAIL_HOST:-}

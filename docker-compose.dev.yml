@@ -29,6 +29,7 @@ services:
       # Public address used in e-mail links (password reset etc.) -> the dev frontend.
       BASE_URL: http://localhost:8001
       GRAMPS_LANGUAGE: fi
+      REGISTRATION_DISABLED: "true"
     depends_on:
       postgres:
         condition: service_healthy
