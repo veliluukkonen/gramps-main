@@ -24,7 +24,11 @@ services:
       POSTGRES_DB: gramps
       POSTGRES_USER: gramps
       POSTGRES_PASSWORD: gramps_dev
-      SECRET_KEY: dev-secret-key
+      # Dev-only key; must be >= 32 bytes or PyJWT warns on every token.
+      DJANGO_SECRET_KEY: dev-only-secret-key-not-for-production-0123456789
+      # Public address used in e-mail links (password reset etc.) -> the dev frontend.
+      BASE_URL: http://localhost:8001
+      GRAMPS_LANGUAGE: fi
     depends_on:
       postgres:
         condition: service_healthy
