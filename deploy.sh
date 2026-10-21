@@ -17,6 +17,10 @@ echo "🚀 Aloitetaan käyttöönotto kohteeseen: ${DOCKER_HOST}"
 echo "📥 Haetaan uusimmat kuvat..."
 docker-compose pull
 
+echo "📝 Tallennetaan vanhojen konttien lokit (down poistaa ne)..."
+mkdir -p logs
+docker-compose logs --timestamps --no-color > "logs/deploy-$(date +%Y%m%d-%H%M%S).log" || true
+
 echo "🛑 Pysäytetään vanhat palvelut..."
 docker-compose down
 
