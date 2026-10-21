@@ -30,3 +30,4 @@ keys/
 .idea/
 EOF.env
 
+.aider*
